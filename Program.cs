@@ -1,25 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
- 
-// DbContext
-builder.Services.AddDbContext<AppDbContext>(options => {    
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-// Repository
-builder.Services.AddScoped<ILivroRepository, LivrosRepository>();
-// Service
-builder.Services.AddScoped<BibliotecaService>();
-
-builder.Services.AddOpenApi();
-
-var app = builder.Build();
+var app = builder.AddAppConfig();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
