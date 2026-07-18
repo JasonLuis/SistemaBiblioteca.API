@@ -4,12 +4,14 @@ public static class BuilderConfig
     {
         // Controllers
         builder.AddApiConfig();
+        // Cors
+        builder.AddCorsConfig();
         // DbContext
         builder.AddDbContextConfig();
         // Dependency Injection (Repository and Service)
         builder.AddDiConfig();
-        // OpenAPI
-        builder.AddOpenApi();
+        // Swagger
+        builder.AddSwagger();
 
         return builder.Build();
     }
