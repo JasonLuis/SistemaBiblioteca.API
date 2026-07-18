@@ -1,6 +1,6 @@
-public static class AppConfig
+public static class BuilderConfig
 {
-    public static WebApplication AddAppConfig(this WebApplicationBuilder builder)
+    public static WebApplication AddBuilderConfig(this WebApplicationBuilder builder)
     {
         // Controllers
         builder.AddApiConfig();

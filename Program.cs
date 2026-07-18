@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var app = builder.AddAppConfig();
+var app = builder.AddBuilderConfig();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
