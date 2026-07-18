@@ -6,11 +6,12 @@ var app = builder.AddBuilderConfig();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+
     app.UseSwaggerUI(options =>
     {
         options.DocumentTitle = "Sistema Biblioteca API";
-        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Sistema Biblioteca API v1");
     });
 }
 
