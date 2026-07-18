@@ -21,4 +21,19 @@ public class BibliotecaService
     {
         await _livrosRepository.AddLivroAsync(livro);
     }
+
+    public async Task UpdateLivroAsync(int id, Livro livro)
+    {
+
+        if(id <=0) throw new ArgumentException("Id inválido."); 
+
+        var existingLivro = await _livrosRepository.GetLivroByIdAsync(id);
+        if (existingLivro == null) throw new KeyNotFoundException($"Livro com id {id} não encontrado.");
+        
+        existingLivro.Titulo = livro.Titulo;
+        existingLivro.Autor = livro.Autor;
+        existingLivro.CodigoLivro = livro.CodigoLivro;
+
+        await _livrosRepository.UpdateLivroAsync(existingLivro);
+    }
 }

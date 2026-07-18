@@ -50,7 +50,7 @@ public class LivroController : ControllerBase
     }
 
     [HttpPost("AddLivro")]
-    public async Task<IActionResult> AddLivro( CreateLivroDTO livro) 
+    public async Task<IActionResult> AddLivro(CreateLivroDTO livro) 
     {
         try
         {
@@ -71,4 +71,35 @@ public class LivroController : ControllerBase
             return StatusCode(500, $"Erro ao adicionar livro");
         }
     }
+
+    [HttpPut("{id:int}", Name = "UpdateLivro")]
+    public async Task<IActionResult> UpdateLivro(int id, UpdateLivroDTO livro)
+    {
+        try
+        {
+            var updatedLivro = new Livro
+            {
+                Titulo = livro.Titulo,
+                Autor = livro.Autor,
+                CodigoLivro = livro.CodigoLivro
+            };
+
+            await _bibliotecaService.UpdateLivroAsync(id, updatedLivro);
+
+            return NoContent();
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(ex.Message);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Erro ao atualizar livro com id {id}");
+        }
+    }
 }
+
