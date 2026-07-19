@@ -8,6 +8,8 @@ public static class BuilderConfig
         builder.AddCorsConfig();
         // DbContext
         builder.AddDbContextConfig();
+        // Identity
+        builder.AddIdentityConfig();
         // Dependency Injection (Repository and Service)
         builder.AddDiConfig();
         // Swagger
