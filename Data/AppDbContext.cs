@@ -1,6 +1,7 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-public class AppDbContext: DbContext
+public class AppDbContext: IdentityDbContext
 {
     public DbSet<Livro> Livro { get; set; }
 
@@ -21,6 +22,7 @@ public class AppDbContext: DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder); // Chamada necessária para configurar as entidades do Identity
         modelBuilder.ApplyConfiguration(new LivrosConfiguration());
     }
 }
