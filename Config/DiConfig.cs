@@ -6,7 +6,7 @@ public static class DiConfig
         builder.Services.AddScoped<ILivroRepository, LivrosRepository>();
         // Service
         builder.Services.AddScoped<BibliotecaService>();
-
+        builder.Services.AddScoped<AuthService>();
         return builder;
     }
 }
